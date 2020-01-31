@@ -1,0 +1,271 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-2">
+        <app-sidenav></app-sidenav>
+    </div>
+    <div class="col-10 content">
+      <div class="title borde-title">
+        <a [routerLink]="['/contratos']"> Contratos </a>/ Datos Generales
+      </div>
+
+      <div class="content-section  overflow-auto">
+
+        <div id="accordion">
+          <div class="card well well-sm">
+            <div class="card-header well well-sm" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Informaci&oacute;n General
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12">
+                    <table id="responsive-example-table" class="large-only" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td class="label"><strong>C&oacute;digo de Contrato</strong></td>
+                          <td class="input" style="border-right: 5px #fff solid">{{ contrato.txt_codigoContrato }}</td>
+                          <td class="label"><strong>Plazo del Contrato</strong></td>
+                          <td>135</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Tipo Contrato</strong></td>
+                          <td class="input" style="border-right: 5px #fff solid">{{contrato.qn_tipoContrato}}</td>
+                          <td class="label"><strong>Fecha de Suscripcion</strong></td>
+                          <td>{{contrato.dt_fechaSuscripcion}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Numero de Proceso</strong></td>
+                          <td class="input" style="border-right: 5px #fff solid">{{contrato.txt_numProceso}}</td>
+                          <td class="label"><strong>Fecha de Inicio</strong></td>
+                          <td class="input">{{contrato.dt_fechaInicio}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Tipo de Proceso</strong></td>
+                          <td class="input" style="border-right: 5px #fff solid">{{contrato.qn_tipoProceso}}</td>
+                          <td class="label"><strong>Fecha de Finalizaci&oacute;n</strong></td>
+                          <td class="input">{{contrato.dt_fechaFin}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Monto Adjudicado</strong></td>
+                          <td class="input" style="border-right: 5px #fff solid">{{contrato.vm_montoAdjudicado}}</td>
+                          <td class="label"><strong>Recurrencia</strong></td>
+                          <td *ngIf="(contrato.bol_recurrencia)" class="input">SI</td>
+                          <td *ngIf="!(contrato.bol_recurrencia)" class="input">NO</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Proveedor</strong></td>
+                          <td class="input" style="border-right: 5px #fff solid">{{contrato.qn_proveedor}}</td>
+                          <td class="label"><strong>RUC</strong></td>
+                          <td class="input">{{contrato.qn_proveedor}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Obj. Contratacion</strong></td>
+                          <td colspan="3" class="tdContent">{{contrato.txt_objetoContratacion}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Formas de Pago</strong></td>
+                          <td colspan="3" class="tdContent"></td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Garantias</strong></td>
+                          <td colspan="3" class="tdContent" *ngFor="let garantia of contrato?.garantias">{{garantia.ID}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Unidad Consolidadora
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12">
+                    <table id="responsive-example-table" class="large-only" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td class="label"></td>
+                          <td class="input"></td>
+                          <td class="label"></td>
+                          <td class="input"></td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Nombre Unidad</strong></td>
+                          <td colspan="3" class="tdContent">{{contrato.txt_nombreDelegado}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Descripci&oacute;n</strong></td>
+                          <td colspan="3" class="tdContent">Unidad de Adquisici&oacute;n de Servicios</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>e-mail</strong></td>
+                          <td colspan="3" class="tdContent">uas@espol.edu.ec</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Informaci&oacute;n Referencial
+                </button>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12">
+                    <table id="responsive-example-table" class="large-only" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td class="label"></td>
+                          <td class="input"></td>
+                          <td class="label"></td>
+                          <td class="input"></td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Nombre Delegado</strong></td>
+                          <td colspan="3" class="tdContent">{{contrato.txt_nombreDelegado}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Nombre Administrador</strong></td>
+                          <td colspan="3" class="tdContent">{{contrato.txt_nombreAdministrador}}</td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Nombre Tecnico Externo</strong></td>
+                          <td colspan="3" class="tdContent">{{contrato.txt_nombreTecnicoExterno}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Evidencias
+                </button>
+              </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12">
+                    <table id="responsive-example-table" class="large-only" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td class="label"></td>
+                          <td class="input"></td>
+                          <td class="label"></td>
+                          <td class="input"></td>
+                        </tr>
+                        <tr>
+                          <td class="label"><strong>Archivo</strong></td>
+                          <td colspan="2" class="tdContent">{{contrato.txt_nombreTecnicoExterno}}</td>
+                          <td class="tdContent">{{contrato.txt_nombreTecnicoExterno}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div>
+        <span class="table-add float-right mb-0 mr-0">
+          <button class="btn btn-primary">Aceptar</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<table id="responsive-example-table" class="large-only" cellspacing="0">
+    <tbody>
+      <tr align="left">
+        <th width="30%">Stuff</th>
+        <th width="12%">Rate</th>
+        <th width="12%">Amount</th>
+        <th width="12%">Points</th>
+        <th width="12%">Number</th>
+        <th width="18%">Type</th>
+        <th width="12%">Name</th>
+      </tr>
+      <tr>
+        <td>Something</td>
+        <td>3.375%</td>
+        <td>$123.12</td>
+        <td>1.125</td>
+        <td>4,000</td>
+        <td>Potato</td>
+        <td>Paul</td>
+      </tr>
+      <tr>
+        <td>Something Else</td>
+        <td>2.750%</td>
+        <td>$345.23</td>
+        <td>5</td>
+        <td>180</td>
+        <td>Spaceship</td>
+        <td>Skippy</td>
+      </tr>
+      <tr>
+        <td colspan="7" class="sub">Subgroup Header</td>
+      </tr>
+      <tr>
+        <td>Another Thing</td>
+        <td>3.375%</td>
+        <td>$563.12</td>
+        <td>222</td>
+        <td>60</td>
+        <td>Gym Shoe</td>
+        <td>George</td>
+      </tr>
+      <tr>
+        <td>Thing w/Less Stuff</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Harmonica</td>
+        <td>Helga</td>
+      </tr>
+      <tr>
+        <td>Last Thing</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>4</td>
+        <td>Meaning of Life</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+-->

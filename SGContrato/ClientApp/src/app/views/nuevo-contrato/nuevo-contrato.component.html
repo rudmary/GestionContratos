@@ -1,0 +1,224 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-2">
+      <app-sidenav></app-sidenav>
+    </div>
+    <div class="col-10 content">
+      <div class="title borde-title">
+        <a [routerLink]="['/contratos']"> Contratos </a>/ Nuevo Contrato
+      </div>
+      <form [formGroup]="formGroup">
+        <div class="content-section  overflow-auto">
+          <div id="accordion">
+            <div class="card well well-sm">
+              <div class="card-header well well-sm" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Informaci&oacute;n General
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <table id="responsive-example-table" class="large-only" cellspacing="0">
+                        <tbody>
+                          <tr>
+                            <td class="label"><strong>C&oacute;digo de Contrato</strong></td>
+                            <td><input type="text" class="sinborde inputText" formControlName="txt_codigoContrato"></td>
+                            <td class="label"><strong>Plazo del Contrato</strong></td>
+                            <td>
+                              <div class="input-group textArea">
+                                <input type="number" class="sinborde plazo" formControlName="qn_vigenciaContrato">
+                                <div class="input-group-append">
+                                  <span class="input-group-text">D&iacute;as</span>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="label"><strong>Tipo Contrato</strong></td>
+                            <td>
+                              <!--input type="text" class="sinborde inputText"-->
+                              <select class="form-control sinborde" id="qn_tipoContrato" formControlName="qn_tipoContrato">
+                                <option selected>Seleccione uno</option>
+                                <option *ngFor="let tipo of tiposContrato" [ngValue]="qn_tipoContrato" value="{{tipo.tipoID}}">{{tipo.txt_nombreTipo}}</option>
+                              </select>
+                            </td>
+                            <td class="label"><strong>Fecha de Suscripcion</strong></td>
+                            <td><input type="date" class="sinborde textArea" formControlName="dt_fechaSuscripcion"></td>
+                          </tr>
+                          <tr>
+                            <td class="label"><strong>Numero de Proceso</strong></td>
+                            <td><input type="text" class="sinborde inputText" formControlName="txt_numProceso"></td>
+                            <td class="label"><strong>Fecha de Inicio</strong></td>
+                            <td><input type="date" class="sinborde textArea" formControlName="dt_fechaInicio"></td>
+                          </tr>
+                          <tr>
+                            <td class="label"><strong>Tipo de Proceso</strong></td>
+                            <td><input type="text" class="sinborde inputText" formControlName="qn_tipoProceso"></td>
+                            <td class="label"><strong>Fecha de Finalizaci&oacute;n</strong></td>
+                            <td><input type="date" class="sinborde textArea" formControlName="dt_fechaFin"></td>
+                          </tr>
+                          <tr>
+                            <td class="label"><strong>Monto Adjudicado</strong></td>
+                            <td><input type="number" class="sinborde inputText" formControlName="vm_montoAdjudicado"></td>
+                            <td class="label"><strong>Recurrencia</strong></td>
+                            <td>
+                              <div class="form-control sinborde">
+                                <label class="radio-inline radioRecurrencia">
+                                  <input type="radio" class="sinborde inputRecurrencia" value="false" formControlName="bol_recurrencia" [checked]="'checked'"><small>NO</small>
+                                </label>
+                                <label class="radio-inline radioRecurrencia">
+                                  <input type="radio" class="sinborde inputRecurrencia" value="true" formControlName="bol_recurrencia"><small>SI</small>
+                                </label>
+                              </div>
+                              
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="label"><strong>Proveedor</strong></td>
+                            <td>
+                              <!--input type="text" class="sinborde inputText" formControlName="qn_proveedor"-->
+                              <select class="form-control sinborde" formControlName="qn_proveedor" name="qn_proveedor" id="qn_proveedor">
+                                <option selected disabled>Seleccione</option>
+                                <option *ngFor="let proveedor of proveedores" [ngValue]="qn_proveedor" value="{{proveedor.ID}}">{{proveedor.name}}</option>
+                              </select>
+                            </td>
+                            <td class="label"><strong>RUC</strong></td>
+                            <td><input type="number" class="sinborde textArea" disabled></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Obj. Contratacion</strong></td>
+                            <td colspan="3" class="tdContent"><input type="text" class="sinborde textArea" formControlName="txt_objetoContratacion"></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Formas de Pago</strong></td>
+                            <td colspan="3" class="tdContent"><input type="text" class="sinborde textArea" formControlName="txt_detalleFormaPago"></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Garantias</strong></td>
+                            <td colspan="3" class="tdContent"><input type="text" class="sinborde textArea" formControlName="txt_detalleGarantias"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Unidad Consolidadora
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <table id="responsive-example-table" class="large-only" cellspacing="0">
+                        <tbody>
+                          <tr align="left">
+                            <td class="label"><strong>Nombre Unidad</strong></td>
+                            <td colspan="2" class="tdContent">
+                              <!--input type="text" class="sinborde textArea" placeholder="Nombre de la Unidad Consolidadora" formControlName="qn_unidadConsolidadora"-->
+                              <select class="form-control sinborde" id="qn_unidadConsolidadora" formControlName="qn_unidadConsolidadora">
+                                <option selected disabled>Seleccione</option>
+                                <option *ngFor="let unidad of unidades" [ngValue]="qn_unidadConsolidadora" value="{{unidad.ID}}">{{unidad.name}}</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="label"><strong>Descripci&oacute;n</strong></td>
+                            <td colspan="2" class="tdContent"><input type="text" class="sinborde textArea" placeholder="Breve descripcion de la unidad"></td>
+                          </tr>
+                          <tr>
+                            <td class="label"><strong>Correo Electronico</strong></td>
+                            <td colspan="2" class="tdContent"><input type="email" class="sinborde textArea" placeholder="Correo electronico"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Informaci&oacute;n Referencial
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <table id="responsive-example-table" class="large-only" cellspacing="0">
+                        <tbody>
+                          <tr align="left">
+                            <td class="label"><strong>Nombre Delegado</strong></td>
+                            <td colspan="2" class="tdContent"><input type="text" class="sinborde textArea" placeholder="Nombre del Delegado del Contrato" formControlName="txt_nombreDelegado"></td>
+                          </tr>
+                          <tr>
+                            <td class="label"><strong>Nombre Administrador</strong></td>
+                            <td colspan="2" class="tdContent"><input type="text" class="sinborde textArea" placeholder="Nombre del administrador del contrato" formControlName="txt_nombreAdministrador"></td>
+                          </tr>
+                          <tr>
+                            <td class="label"><strong>Nombre Tecnico Externo</strong></td>
+                            <td colspan="2" class="tdContent"><input type="text" class="sinborde textArea" placeholder="Nombre del t&eacute;cnico externo para el contrato" formControlName="txt_nombreTecnicoExterno"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Evidencias
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <table id="responsive-example-table" class="large-only" cellspacing="0">
+                        <tbody>
+                          <tr>
+                            <td class="label"><strong>Contrato</strong></td>
+                            <td colspan="2" class="tdContent">
+                              <input #file type="file" class="form-control-file sinborde textArea" multiple (change)="upload(file.files)" accept=".pdf" id="txt_archivoContrato" name="txt_archivoContrato" />
+                              
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div>
+          <span class="table-add float-right mb-0 mr-0">
+            <button class="btn btn-primary" (click)="onSubmit()">Guardar</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

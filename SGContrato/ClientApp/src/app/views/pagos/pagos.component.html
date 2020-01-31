@@ -1,0 +1,110 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <app-sidenav></app-sidenav>
+    </div>
+    <div class="col-10 content">
+      <div class="title borde-title">
+        <a [routerLink]="['/contratos']"> Contratos </a> / formas de pago
+      </div>
+      <div class="content-section">
+        <div class="table">
+          <div class="table-responsive">
+            <span class="table-add float-right mb-0 mr-0">
+              <a class="text-warning" data-toggle="modal" data-target="#pagoModal">
+                <i class="fa fa-fw fa-plus fa-2x" aria-hidden="true"></i>
+              </a>
+            </span>
+            <p *ngIf="!(pagos && pagos.length)">
+              No Existen Datos que Mostrar
+            </p>
+            <div *ngIf="pagos && pagos.length">
+              <table class="table table-striped-sm table-hover text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">C&oacute;digo</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">%</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Fecha de pago</th>
+                    <th scope="col"># Comprobante</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor=" let pago of pagos | paginate: { itemsPerPage: 4, currentPage: paginaActual} ">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                    <td><a><i class="fa fa-refresh" aria-hidden="true"></i></a></td>
+                    <td><a><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <pagination-controls (pageChange)="paginaActual = $event" *ngIf="pagos.length>itemsPerPage"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="pagoModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Nueva Forma de Pago</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form>
+          <div class="form-group row">
+            <label for="tipoGarantia" class="col-sm-12 col-form-label"><strong>Pagos</strong></label>            
+          </div>
+          <div class="form-group row">
+            <label for="porcentaje" class="col-sm-3 mr-1 col-form-label text-center">%</label>
+            <label for="valor" class="col-sm-4 mr-1 col-form-label text-center">Valor</label>
+            <label for="fechaPago" class="col-sm-4 col-form-label text-center">Fecha de Pago</label>
+          </div>
+          <div class="form-group row ">
+            <div class="col-sm-3 mr-1">
+              <input type="number" class="form-control" id="porcentaje">
+            </div>
+            <div class="col-sm-4 mr-1">
+              <div class="input-group">
+                <div class="input-group-append">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input type="number" class="form-control" id="valor">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" type="datetime-local" value="" id="fechaPago">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12 text-center">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <!--div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div-->
+
+    </div>
+  </div>
+</div>

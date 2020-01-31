@@ -1,0 +1,53 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-10 content">
+      <div class="title borde-title">
+        <a [routerLink]="['/Configuracion']"> Configuracion</a>/ Usuarios
+      </div>
+      <div class="content-section">
+        <div class="table">
+          <div class="table-responsive">
+            <span class="table-add float-right mb-0 mr-0">
+              <a class="text-warning" (click)="openFormModal()">
+                <i class="fa fa-fw fa-plus fa-2x" aria-hidden="true"></i>
+              </a>
+            </span>
+            <div class="text-center" *ngIf="!(showSpinner && usuarios)">
+               <mat-progress-spinner class="example-margin"
+                                        [color]="color"
+                                        [mode]="mode"
+                                        [value]="value">
+               </mat-progress-spinner>               
+            </div>
+            <!--p *ngIf="!(usuarios && usuarios.length)">
+              No Existen Datos que Mostrar
+            </sp-->
+            <div *ngIf="usuarios && usuarios.length">
+              <table class="table table-striped-sm table-hover text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor=" let usuario of usuarios | paginate: { itemsPerPage: 4, currentPage: paginaActual} ">
+                    <td>{{ usuario.userID }}</td>
+                    <td>{{ usuario.rolID }}</td>
+                    <td><a (click)="editarUsuario(usuario)"><i class="fa fa-refresh" aria-hidden="true"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <pagination-controls (pageChange)="paginaActual = $event" *ngIf="usuarios.length>4"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

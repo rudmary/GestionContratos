@@ -1,0 +1,38 @@
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand">
+        <img src="assets/img/logo_espol.png" class="img-fluid">
+      </a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div *ngIf="!isLoggedIn" class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+           [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a id="estrella" class="nav-link" (click)="login()">Iniciar Sesi&oacute;n <i class="fa fa-fw fa-user"></i></a>
+            <a id="estrella" class="nav-link" [href]="redirectUrl">Iniciar Sesi&oacute;n CAS<i class="fa fa-fw fa-user"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="isLoggedIn" class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+           [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a id="estrella" class="nav-link">Ruddy Maricela Moncayo, <i class="fa fa-bell"></i></a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a id="estrella" class="nav-link" (click)="logOut()">Cerrar Sesi&oacute;n <i class="fa fa-sign-out"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <app-sidenav></app-sidenav>
+    </div>
+    <div class="col-10 content">
+      <div class="title borde-title">
+        <a [routerLink]="['/contratos']"> Contratos </a> / solicitud de transferencia
+      </div>
+      <div class="content-section">
+        <div class="example-header mat-elevation-z8">
+          <div class="row">
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Contrato">
+            </mat-form-field>
+            <div class="example-button-row">
+              <button mat-button color="primary" (click)="openFormModal()">Solicitar</button>
+            </div>
+          </div>
+          
+        </div>
+        <div class="example-container mat-elevation-z8">
+          <mat-table [dataSource]="dataSource" matSort>
+            <!-- Checkbox Column-->
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox color="warn" borde-color="warn" (change)="$event ? masterToggle() : null"
+                              [checked]="selection.hasValue() && isAllSelected()"
+                              [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+                              (change)="$event ? selection.toggle(row) : null"
+                              [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+              </td>
+            </ng-container>
+
+            <!--  Columna ID-->
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+            </ng-container>
+
+            <!-- Columna Apellido -->
+            <ng-container matColumnDef="txt_codigoContrato">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo</mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.txt_codigoContrato}} </mat-cell>
+            </ng-container>
+
+            <!-- Columna Nombre-->
+            <ng-container matColumnDef="txt_objetoContratacion">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Objeto Contratacion </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.txt_objetoContratacion}} </mat-cell>
+            </ng-container>
+
+            <!-- Columna Nacionalidad -->
+            <ng-container matColumnDef="qn_proveedor">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Proveedor</mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.qn_proveedor}} </mat-cell>
+            </ng-container>
+
+            <!-- Columna Edad -->
+            <ng-container matColumnDef="txt_nombreAdministrador">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Administrador </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.txt_nombreAdministrador}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns" class="encabezado"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="5" [showFirstLastButtons]></mat-paginator>
+        </div>    
+        
+      </div>
+    </div>
+  </div>  
+</div>
+
+
